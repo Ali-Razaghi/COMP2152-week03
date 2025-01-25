@@ -8,7 +8,37 @@ mNumLives = 12          # number of monster's lives remaining
 diceOptions = [1, 2, 3, 4, 5, 6]
 combatStrength = int(input("Enter your combat Strength: "))
 mCombatStrength = int(input("Enter the monster's combat Strength: "))
+
+# Define the weapons array
 weapons = ["Fist", "Knife", "Club", "Gun", "Bomb", "Nuclear bomb"]
+
+# Simulate rolling the dice (1-6) for weapon selection
+weaponRoll = random.randint(1, 6)
+
+# Check if weaponRoll is valid
+if 1 <= weaponRoll <= 6:
+    # Add weaponRoll to hero's combat strength
+    combatStrength += weaponRoll
+
+    # Retrieve the weapon based on weaponRoll (adjust index by subtracting 1)
+    heroWeapon = weapons[weaponRoll - 1]
+
+    # Print out the hero's weapon
+    print(f"Your weapon is: {heroWeapon}")
+
+    # Conditions for weaponRoll evaluation
+    if weaponRoll <= 2:
+        print("You rolled a weak weapon, friend.")
+    elif weaponRoll <= 4:
+        print("Your weapon is meh.")
+    else:
+        print("Nice weapon, friend!")
+
+    # Check if the weapon is not a Fist
+    if heroWeapon != "Fist":
+        print("Thank goodness you didn't roll the Fist...")
+else:
+    print("Error: Invalid roll. The dice roll should be a number between 1 and 6.")
 
 input("Roll the dice for your health points (Press enter)")
 healthPoints = random.choice(diceOptions)
